@@ -185,3 +185,68 @@ function calculateResult() {
 function updateResult() {
   document.getElementById("result").value = currentExpression || "0";
 }
+
+// ------------------------------
+// Fraction Feature
+// ------------------------------
+function gcd(a, b) {
+  a = Math.abs(a);
+  b = Math.abs(b);
+  while (b) {
+    var t = b;
+    b = a % b;
+    a = t;
+  }
+  return a;
+}
+
+function decimalToFraction(decimal) {
+  if (isNaN(decimal) || !isFinite(decimal)) return "";
+  if (decimal === 0) return "0";
+
+  var sign = decimal < 0 ? "-" : "";
+  decimal = Math.abs(decimal);
+
+  var tolerance = 1.0e-9;
+  var h1 = 1, h2 = 0, k1 = 0, k2 = 1;
+  var b = decimal;
+
+  do {
+    var a = Math.floor(b);
+    var aux = h1;
+    h1 = a * h1 + h2;
+    h2 = aux;
+    aux = k1;
+    k1 = a * k1 + k2;
+    k2 = aux;
+    b = 1 / (b - a);
+  } while (Math.abs(decimal - h1 / k1) > decimal * tolerance);
+
+  if (k1 === 1) return sign + h1;
+  return sign + h1 + "/" + k1;
+}
+
+function fractionFromResult() {
+  var display = document.getElementById("result");
+  var val = parseFloat(display.value);
+  var fractionArea = document.getElementById("fraction-display");
+
+  if (isNaN(val) || !isFinite(val) || val === 0) {
+    fractionArea.style.display = "none";
+    return;
+  }
+
+  var fraction = decimalToFraction(val);
+  if (fraction.indexOf("/") === -1) {
+    fractionArea.style.display = "none";
+    return;
+  }
+
+  fractionArea.textContent = "= " + fraction;
+  fractionArea.style.display = "block";
+}
+
+function inputFraction() {
+  currentExpression += "/";
+  updateResult();
+}

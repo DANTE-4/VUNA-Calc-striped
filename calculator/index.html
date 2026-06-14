@@ -33,6 +33,7 @@
                 <div class="calculator">
                   <div class="display-container">
                     <input type="text" class="form-control" id="result" placeholder="0" disabled />
+                    <div id="fraction-display" class="fraction-display"></div>
                   </div>
 
                   <div class="btn-grid">
@@ -69,7 +70,9 @@
                     <!-- Row 9 -->
                     <button class="btn btn-operator" onclick="operatorToResult('-')">−</button>
 
-                    <button class="btn btn-equals" onclick="calculateResult()" style="grid-column: span 4;">=</button>
+                    <button class="btn btn-equals" onclick="calculateResult()" style="grid-column: span 2;">=</button>
+                    <button class="btn btn-special" onclick="inputFraction()" title="Insert fraction slash">a/b</button>
+                    <button class="btn btn-special" onclick="fractionFromResult()" title="Convert result to fraction">ab/c</button>
                   </div>
                 </div>
               </div>
