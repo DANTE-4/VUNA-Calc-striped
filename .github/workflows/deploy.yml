@@ -40,3 +40,4 @@ jobs:
             test*
             jest.config.js
             package*.json
+            .eslintrc.json
