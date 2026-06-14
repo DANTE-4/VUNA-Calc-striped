@@ -1,0 +1,18 @@
+{
+  "name": "ironforge-gym",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IRONFORGE GYM - Forge Your Strength",
+  "scripts": {
+    "start": "npx serve .",
+    "lint": "eslint calculator/assets/js/**.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint calculator/assets/js/**.js --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}
