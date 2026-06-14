@@ -1,8 +1,8 @@
 {
-  "name": "ironforge-gym",
+  "name": "stride-footwear",
   "version": "1.0.0",
   "private": true,
-  "description": "IRONFORGE GYM - Forge Your Strength",
+  "description": "STRIDE Footwear - Step Into Greatness",
   "scripts": {
     "start": "npx serve .",
     "lint": "eslint calculator/assets/js/**.js",
